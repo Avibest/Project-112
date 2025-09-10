@@ -3,7 +3,7 @@ var prediction = "";
 Webcam.set({
   width: 350,
   height: 300,
-  image_format: "png", // fixed key name
+  image_format: "png",
   png_quality: 90
 });
 
@@ -14,7 +14,8 @@ function take_snapshot() {
   Webcam.snap(function (data_uri) {
     document.getElementById("result").innerHTML =
       '<img id="image_captured" src="' + data_uri + '" alt="Captured gesture snapshot" />';
-    document.getElementById("status").textContent = "Snapshot captured. Click Predict Gesture.";
+    document.getElementById("status").textContent =
+      "Snapshot captured. Keep your hand close to the camera for accurate prediction.";
   });
 }
 
@@ -27,7 +28,19 @@ var classifier = ml5.imageClassifier(
 
 function modelLoaded() {
   console.log("Model Loaded");
-  document.getElementById("status").textContent = "Model loaded. You can capture and predict.";
+  document.getElementById("status").textContent =
+    "Model loaded. Keep your hand close to the camera, then capture and predict.";
+
+  // Optional: speak a short reminder once when the model loads
+  try {
+    var synth = window.speechSynthesis;
+    var utter = new SpeechSynthesisUtterance(
+      "Model loaded. Keep your hand close to the camera for best results."
+    );
+    synth.speak(utter);
+  } catch (e) {
+    console.warn("Speech synthesis unavailable:", e);
+  }
 }
 
 function speak() {
@@ -44,7 +57,8 @@ function speak() {
 function check() {
   var img = document.getElementById("image_captured");
   if (!img) {
-    document.getElementById("status").textContent = "Please capture a snapshot first.";
+    document.getElementById("status").textContent =
+      "Please capture a snapshot first. Keep your hand close to the camera.";
     return;
   }
   document.getElementById("status").textContent = "Predicting...";
@@ -74,7 +88,7 @@ function gotResults(error, results) {
   var emojiEl = document.getElementById("result_emoji");
   var quoteEl = document.getElementById("quote");
 
-  // Allow common variations to ensure 👍 shows when it's "Best"
+  // Map common labels — tweak these to match your model exactly
   if (label === "amazing" || label === "ok" || label === "ok hand") {
     emojiEl.innerHTML = "&#128076;"; // OK hand
     quoteEl.innerHTML = "This is Looking Amazing";
@@ -84,12 +98,13 @@ function gotResults(error, results) {
     label === "thumbsup" ||
     label === "like"
   ) {
-    emojiEl.innerHTML = "&#128077;"; // 👍 thumbs up
+    emojiEl.innerHTML = "&#128077;"; // Thumbs up
     quoteEl.innerHTML = "All The Best";
   } else {
-    emojiEl.innerHTML = "&#9996;"; // ✌️ victory
+    emojiEl.innerHTML = "&#9996;"; // Victory
     quoteEl.innerHTML = "That Was a Marvelous Victory";
   }
 
-  document.getElementById("status").textContent = "Prediction complete.";
+  document.getElementById("status").textContent =
+    "Prediction complete. If results seem off, keep your hand closer to the camera and try again.";
 }
