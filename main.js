@@ -64,22 +64,30 @@ function gotResults(error, results) {
   }
 
   var top = results[0];
-  document.getElementById("result_gesture_name").innerHTML = top.label || "(unknown)";
-  prediction = top.label || "";
+  var raw = top.label || "";
+  var label = raw.trim().toLowerCase(); // normalize for robust matching
+
+  document.getElementById("result_gesture_name").innerHTML = raw;
+  prediction = raw;
   speak();
 
   var emojiEl = document.getElementById("result_emoji");
   var quoteEl = document.getElementById("quote");
 
-  // Map labels to emoji & quote
-  if (top.label === "Amazing") {
+  // Allow common variations to ensure 👍 shows when it's "Best"
+  if (label === "amazing" || label === "ok" || label === "ok hand") {
     emojiEl.innerHTML = "&#128076;"; // OK hand
     quoteEl.innerHTML = "This is Looking Amazing";
-  } else if (top.label === "Best") {
-    emojiEl.innerHTML = "&#128077;"; // Thumbs up
+  } else if (
+    label === "best" ||
+    label === "thumbs up" ||
+    label === "thumbsup" ||
+    label === "like"
+  ) {
+    emojiEl.innerHTML = "&#128077;"; // 👍 thumbs up
     quoteEl.innerHTML = "All The Best";
   } else {
-    emojiEl.innerHTML = "&#9996;"; // Victory
+    emojiEl.innerHTML = "&#9996;"; // ✌️ victory
     quoteEl.innerHTML = "That Was a Marvelous Victory";
   }
 
