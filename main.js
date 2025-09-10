@@ -20,7 +20,6 @@ function take_snapshot() {
 
 console.log("ml5 Version:", ml5.version);
 
-// ⬅️ Reverted to your original Teachable Machine model
 var classifier = ml5.imageClassifier(
   "https://teachablemachine.withgoogle.com/models/n_h2846qi/model.json",
   modelLoaded
@@ -65,21 +64,18 @@ function gotResults(error, results) {
   }
 
   var top = results[0];
-  var raw = top.label || "";
-  var label = raw.trim().toLowerCase(); // normalize for robust matching
-
-  document.getElementById("result_gesture_name").innerHTML = raw;
-  prediction = raw;
+  document.getElementById("result_gesture_name").innerHTML = top.label || "(unknown)";
+  prediction = top.label || "";
   speak();
 
   var emojiEl = document.getElementById("result_emoji");
   var quoteEl = document.getElementById("quote");
 
-  // Original simple mapping
-  if (label === "amazing") {
+  // Map labels to emoji & quote
+  if (top.label === "Amazing") {
     emojiEl.innerHTML = "&#128076;"; // OK hand
     quoteEl.innerHTML = "This is Looking Amazing";
-  } else if (label === "best") {
+  } else if (top.label === "Best") {
     emojiEl.innerHTML = "&#128077;"; // Thumbs up
     quoteEl.innerHTML = "All The Best";
   } else {
