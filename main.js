@@ -21,7 +21,7 @@ function take_snapshot() {
 console.log("ml5 Version:", ml5.version);
 
 var classifier = ml5.imageClassifier(
-  "https://teachablemachine.withgoogle.com/models/n_h2846qi/model.json",
+  "https://teachablemachine.withgoogle.com/models/16V-DyonP/model.json",
   modelLoaded
 );
 
@@ -72,9 +72,9 @@ function gotResults(error, results) {
   var quoteEl = document.getElementById("quote");
 
   // Map labels to emoji & quote
-  if (top.label === "Amazing") {
+  if (top.label === "Cool") {
     emojiEl.innerHTML = "&#128076;"; // OK hand
-    quoteEl.innerHTML = "This is Looking Amazing";
+    quoteEl.innerHTML = "You are superb";
   } else if (top.label === "Best") {
     emojiEl.innerHTML = "&#128077;"; // Thumbs up
     quoteEl.innerHTML = "All The Best";
@@ -85,4 +85,5 @@ function gotResults(error, results) {
 
   document.getElementById("status").textContent = "Prediction complete.";
 }
+
 
