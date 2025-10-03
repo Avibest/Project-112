@@ -85,3 +85,4 @@ function gotResults(error, results) {
 
   document.getElementById("status").textContent = "Prediction complete.";
 }
+
