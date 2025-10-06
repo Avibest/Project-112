@@ -73,7 +73,7 @@ function gotResults(error, results) {
 
   // Map labels to emoji & quote
   if (top.label === "Cool") {
-    emojiEl.innerHTML = "&#128076;"; // OK hand
+    emojiEl.innerHTML = "&#129304;"; // OK hand
     quoteEl.innerHTML = "You are superb";
   } else if (top.label === "Best") {
     emojiEl.innerHTML = "&#128077;"; // Thumbs up
@@ -85,5 +85,6 @@ function gotResults(error, results) {
 
   document.getElementById("status").textContent = "Prediction complete.";
 }
+
 
 
