@@ -1,22 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="utf-8" />
     <title>Emotion or Emoji</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Bootstrap 3.4.1 (valid CDN) -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
-
-    <!-- jQuery + Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-    <!-- ml5 + WebcamJS -->
     <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
-
-    <!-- App CSS -->
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -41,7 +32,6 @@
       </div>
 
       <div class="row">
-        <!-- Camera -->
         <div class="col-md-4 col-sm-12 col-xs-12 text-center">
           <label>Webcam View</label>
           <div id="camera" aria-label="Webcam preview area"></div>
@@ -49,7 +39,6 @@
           <button class="btn btn-primary" onclick="take_snapshot()">Capture Image</button>
         </div>
 
-        <!-- Prediction -->
         <div class="col-md-4 col-sm-12 col-xs-12 text-center">
           <div class="emoji-list">
             <span>&#129304;</span>
@@ -62,7 +51,6 @@
           <p class="emoji" id="result_emoji" aria-live="polite"></p>
         </div>
 
-        <!-- Snapshot -->
         <div class="col-md-4 col-sm-12 col-xs-12 text-center">
           <label>Snapshot</label>
           <div id="result"></div>
@@ -77,8 +65,8 @@
       </div>
     </div>
 
-    <!-- App JS -->
     <script src="main.js"></script>
   </body>
 </html>
+
 
