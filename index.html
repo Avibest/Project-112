@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Emotion or Emoji</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <title>Gesture Web App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css"/>
   </head>
 
   <body>
@@ -16,7 +16,7 @@
       <div class="text-center">
         <h3 class="btn btn-info heading">
           Gesture Web App
-          <br />
+          <br/>
           <span>&#128076;</span>
           <span>&#128077;</span>
           <span>&#9996;</span>
@@ -35,7 +35,7 @@
         <div class="col-md-4 col-sm-12 col-xs-12 text-center">
           <label>Webcam View</label>
           <div id="camera" aria-label="Webcam preview area"></div>
-          <br /><br />
+          <br/><br/>
           <button class="btn btn-primary" onclick="take_snapshot()">Capture Image</button>
         </div>
 
@@ -45,7 +45,7 @@
             <span>&#128077;</span>
             <span>&#9996;</span>
           </div>
-          <br />
+          <br/>
           <label>Prediction</label>
           <p class="gesture_name" id="result_gesture_name"></p>
           <p class="emoji" id="result_emoji" aria-live="polite"></p>
@@ -54,7 +54,7 @@
         <div class="col-md-4 col-sm-12 col-xs-12 text-center">
           <label>Snapshot</label>
           <div id="result"></div>
-          <br /><br />
+          <br/><br/>
           <button class="btn btn-success" onclick="check()">Predict Gesture</button>
         </div>
       </div>
@@ -68,5 +68,6 @@
     <script src="main.js"></script>
   </body>
 </html>
+
 
 
